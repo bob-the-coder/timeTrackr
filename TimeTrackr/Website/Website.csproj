@@ -215,6 +215,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\components\base.css" />
     <Content Include="Content\components\block.css" />
+    <Content Include="Content\components\cards.css" />
     <Content Include="Content\components\colors.css" />
     <Content Include="Content\components\navbar.css" />
     <Content Include="Content\pages\login.css" />
@@ -272,6 +273,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\components\project\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
