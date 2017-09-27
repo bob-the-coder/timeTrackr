@@ -1,0 +1,33 @@
+﻿#navbar {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    cursor: default;
+}
+
+.profile-pic {
+    position: relative;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    width: 50px;
+    text-align: center;
+    font-size: 26px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.profile-buttons {
+    display: inline-block;
+    padding-left: 28px;
+    margin-left: -28px;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: top;
+    z-index: 0;
+}
+
+.profile-button {
+}

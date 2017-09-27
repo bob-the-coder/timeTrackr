@@ -10,10 +10,6 @@ namespace Website.Controllers
     {
         public virtual ActionResult Index()
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return View(MVC.Account.Views.Login);
-            }
             return View();
         }
     }

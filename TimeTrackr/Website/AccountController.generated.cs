@@ -76,12 +76,14 @@ namespace Website.Controllers
         public class ActionNamesClass
         {
             public readonly string Create = "Create";
+            public readonly string Login = "Login";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Create = "Create";
+            public const string Login = "Login";
         }
 
 
@@ -116,6 +118,17 @@ namespace Website.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             CreateOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Login()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
+            LoginOverride(callInfo);
             return callInfo;
         }
 

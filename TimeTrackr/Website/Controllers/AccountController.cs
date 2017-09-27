@@ -12,12 +12,16 @@ using Website.Models;
 
 namespace Website.Controllers
 {
-    [Authorize]
     public partial class AccountController : Controller
     {
         public virtual ActionResult Create()
         {
             return View(MVC.Account.Views.Register);
+        }
+
+        public virtual ActionResult Login()
+        {
+            return View(MVC.Account.Views.Login);
         }
     }
 }
