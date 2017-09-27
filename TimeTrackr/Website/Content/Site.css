@@ -4,6 +4,7 @@
 /* Set padding to keep content from hitting the edges */
 .body-content {
     width: 1200px;
+    padding: 80px 0;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 

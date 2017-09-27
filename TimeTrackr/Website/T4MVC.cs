@@ -29,6 +29,7 @@ public static partial class MVC
 {
     public static Website.Controllers.AccountController Account = new Website.Controllers.T4MVC_AccountController();
     public static Website.Controllers.HomeController Home = new Website.Controllers.T4MVC_HomeController();
+    public static Website.Controllers.ProjectController Project = new Website.Controllers.T4MVC_ProjectController();
     public static T4MVC.ManageController Manage = new T4MVC.ManageController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
@@ -106,6 +107,7 @@ namespace Links
             public static readonly string base_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/base.min.css") ? Url("base.min.css") : Url("base.css");
             public static readonly string block_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/block.min.css") ? Url("block.min.css") : Url("block.css");
             public static readonly string colors_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/colors.min.css") ? Url("colors.min.css") : Url("colors.css");
+            public static readonly string navbar_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/navbar.min.css") ? Url("navbar.min.css") : Url("navbar.css");
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -151,6 +153,7 @@ namespace Links
                     public const string base_css = "~/Content/components/base.css";
                     public const string block_css = "~/Content/components/block.css";
                     public const string colors_css = "~/Content/components/colors.css";
+                    public const string navbar_css = "~/Content/components/navbar.css";
                 }
             }
             public static partial class pages 

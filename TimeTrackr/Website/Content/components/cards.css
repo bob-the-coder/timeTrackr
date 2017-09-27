@@ -1,0 +1,12 @@
+﻿.card-list {
+    text-align: center;
+}
+
+.card {
+    text-align: initial;
+    margin: 10px;
+}
+
+.card.zoomable:hover {
+    transform: scale(1.1);
+}

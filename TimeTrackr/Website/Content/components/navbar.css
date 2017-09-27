@@ -2,9 +2,11 @@
     display: inline-block;
     height: 50px;
     line-height: 50px;
-    margin-left: 50%;
+    left: 50%;
     transform: translateX(-50%);
     cursor: default;
+    position: fixed;
+    top: 0;
 }
 
 .profile-pic {
