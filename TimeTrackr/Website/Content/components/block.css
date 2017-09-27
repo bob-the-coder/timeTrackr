@@ -1,0 +1,9 @@
+﻿.block {
+    display: inline-block;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+.block-content {
+    padding: 20px;
+}

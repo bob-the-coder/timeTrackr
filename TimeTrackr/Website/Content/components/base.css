@@ -1,0 +1,28 @@
+﻿body {
+    background-color: #eeeeee;
+}
+
+.centered {
+    margin: 0 auto;
+}
+
+h2 {
+    margin: 0;
+    padding: 0 40px;
+    font-size: 20px;
+    height: 40px;
+    line-height: 40px;
+}
+
+input {
+    display: block;
+    outline: none !important;
+    border: 0 !important;
+    height: 30px;
+    line-height: 30px;
+    width: 200px;
+    padding-left: 10px;
+    box-shadow: 0 0 0 1px #c0c0c0;
+    margin: 0;
+    margin-bottom: 15px;
+}
