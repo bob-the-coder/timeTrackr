@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using Website.Filters;
 
 namespace Website
 {
@@ -7,6 +8,7 @@ namespace Website
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            filters.Add(new GlobalIdentityInjectorAttribute());
             filters.Add(new HandleErrorAttribute());
         }
     }

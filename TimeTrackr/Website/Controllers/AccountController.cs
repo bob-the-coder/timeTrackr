@@ -23,5 +23,11 @@ namespace Website.Controllers
         {
             return View(MVC.Account.Views.Login);
         }
+
+        [HttpPost]
+        public virtual async Task<ActionResult> Login(UserLoginModel model)
+        {
+            
+        }
     }
 }
