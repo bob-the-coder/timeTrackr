@@ -54,6 +54,8 @@
     <Compile Include="Commit.cs">
       <DependentUpon>TimeTrackrModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Commit.partial.cs" />
+    <Compile Include="Entities\User.cs" />
     <Compile Include="Extensions\Linq\EntityFrameworkLinqExtensions.cs" />
     <Compile Include="Extensions\QueryableExtensions.cs" />
     <Compile Include="Interfaces\IDataAccessObject.cs" />
@@ -93,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <Compile Include="Entities\Project.partial.cs" />
     <None Include="packages.config" />
     <None Include="TimeTrackrModel.edmx.diagram">
       <DependentUpon>TimeTrackrModel.edmx</DependentUpon>
