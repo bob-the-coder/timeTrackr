@@ -218,6 +218,7 @@
     <Content Include="Content\components\cards.css" />
     <Content Include="Content\components\colors.css" />
     <Content Include="Content\components\navbar.css" />
+    <Content Include="Content\components\table.css" />
     <Content Include="Content\pages\login.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
