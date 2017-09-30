@@ -1,0 +1,13 @@
+﻿using System.Collections.Generic;
+
+namespace BusinessLogic.Models
+{
+    public class User
+    {
+        public System.Guid Id { get; set; }
+        public string Email { get; set; }
+        public byte[] Password { get; set; }
+
+        public virtual ICollection<Project> Projects { get; set; }
+    }
+}

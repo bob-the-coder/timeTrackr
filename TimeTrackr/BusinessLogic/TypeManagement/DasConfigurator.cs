@@ -9,6 +9,30 @@ namespace BusinessLogic.TypeManagement
 {
     public static class DasConfigurator
     {
+        internal static void ConfigureUser(IMapperConfiguration config)
+        {
+            config.CreateMap<DataLayer.User, User>();
+
+            config.CreateMap<User, DataLayer.User>()
+                .ForMember(m => m.Projects, o => o.Ignore());
+        }
+
+        internal static void ConfigureProject(IMapperConfiguration config)
+        {
+            config.CreateMap<DataLayer.Project, Project>();
+
+            config.CreateMap<Project, DataLayer.Project>()
+                .ForMember(m => m.User, o => o.Ignore())
+                .ForMember(m => m.Commits, o => o.Ignore());
+        }
+
+        internal static void ConfigureCommit(IMapperConfiguration config)
+        {
+            config.CreateMap<DataLayer.Commit, Commit>();
+
+            config.CreateMap<Commit, DataLayer.Commit>()
+                .ForMember(m => m.Project, o => o.Ignore());
+        }
 
         #region Item configuration extension methods
 

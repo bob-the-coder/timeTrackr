@@ -218,6 +218,12 @@ namespace BusinessLogic.Workflow
            {
                {
                    typeof (UserRepository), () => new UserRepository()
+               },
+               {
+                   typeof (ProjectRepository), () => new ProjectRepository()
+               },
+               {
+                   typeof (CommitRepository), () => new CommitRepository()
                }
            };
         }

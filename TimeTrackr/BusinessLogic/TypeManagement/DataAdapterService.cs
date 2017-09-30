@@ -25,6 +25,9 @@ namespace BusinessLogic.TypeManagement
 
             var mapperConfiguration = new MapperConfiguration(config =>
             {
+                DasConfigurator.ConfigureUser(config);
+                DasConfigurator.ConfigureProject(config);
+                DasConfigurator.ConfigureCommit(config);
 
                 config.ForAllMaps((mapType, mapperExpression) => { mapperExpression.MaxDepth(2); });
             });
