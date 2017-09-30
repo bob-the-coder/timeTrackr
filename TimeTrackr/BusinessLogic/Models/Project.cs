@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using BusinessLogic.Interfaces;
 
 namespace BusinessLogic.Models
 {
-    public class Project
+    public class Project : ISinglePkModel
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
