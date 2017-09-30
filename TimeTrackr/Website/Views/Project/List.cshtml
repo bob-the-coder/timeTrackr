@@ -1,7 +1,42 @@
-﻿
+﻿@using System.Globalization
+
 <div id="myProjects" class="card-list">
-    @for (var i = 0; i < 10; i++)
-    {
-        @Html.Partial(MVC.Project.Views.CardView)
-    }
+    <table class="block black-on-white">
+        <thead>
+            <tr>
+                <th>Project</th>
+                <th>Started On</th>
+                <th>Last Commit On</th>
+                <th># Commits</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="empty">
+                <td></td>
+                <td></td>
+                <td>Nothing here so far</td>
+                <td>
+                    <button class="white-on-blue">Add Project</button>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            @for (var i = 0; i < 0; i++)
+            {
+                <tr>
+                    <td>Project Name</td>
+                    <td>@DateTime.UtcNow.AddDays(-2).AddHours(5).ToString(CultureInfo.InvariantCulture)</td>
+                    <td>@DateTime.UtcNow.ToString(CultureInfo.InvariantCulture)</td>
+                    <td>103</td>
+                    <td>Ongoing</td>
+                    <td>
+                        <button class="white-on-blue">Details</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 </div>

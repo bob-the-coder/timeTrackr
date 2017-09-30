@@ -1,0 +1,31 @@
+﻿table {
+    width: 100%;
+    display: table !important;
+}
+
+tr {
+    display: table-row;
+}
+
+    tr:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+th, td {
+    line-height: 40px;
+    padding: 0 10px;
+    display: table-cell;
+    text-align: left;
+}
+
+th {
+    background-color: #191970;
+    color: white;
+}
+
+tr.empty > td {
+    line-height: 100px;
+    max-width: 13%;
+    min-width: 195px;
+    text-align: center;
+}
