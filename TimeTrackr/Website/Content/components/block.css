@@ -38,3 +38,15 @@
     .block-section > * {
         width: 170px;
     }
+
+    .block-section.collapsed {
+        padding-bottom: 0;
+    }
+
+        .block-section.collapsed > * {
+            display: none;
+        }
+
+        .block-section.collapsed > label[for]:first-of-type {
+            display: block;
+        }

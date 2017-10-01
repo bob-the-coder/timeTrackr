@@ -238,6 +238,7 @@
     <Content Include="Content\components\bootstrap-datetimepicker.css" />
     <Content Include="Content\components\canvas.css" />
     <Content Include="Content\components\cards.css" />
+    <Content Include="Content\components\checkbox.css" />
     <Content Include="Content\components\colors.css" />
     <Content Include="Content\components\navbar.css" />
     <Content Include="Content\components\table.css" />

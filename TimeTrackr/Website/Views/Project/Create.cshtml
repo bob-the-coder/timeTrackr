@@ -9,9 +9,9 @@
         @Html.LabelFor(model => model.Name)
         @Html.TextBoxFor(model => model.Name, null, new { id = "name" })
 
-        <div class="block-section">
-            <input type="checkbox" id="isGitRepo" />
-            <label for="isGitRepo">Is Git Repository</label>
+        <div class="block-section collapsed">
+            <input type="checkbox" id="isgitrepo" />
+            <label for="isgitrepo" onclick="$(this).parent().toggleClass('collapsed')">Is Git Repository</label>
 
             <label>Username</label>
             <input id="gitusername" />
