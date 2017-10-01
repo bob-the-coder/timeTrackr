@@ -1,0 +1,27 @@
+﻿input[type=checkbox] {
+    display: none !important;
+}
+
+input[type="checkbox"] + label[for] {
+    display: block;
+    line-height: 30px;
+}
+
+    input[type="checkbox"] + label[for]::after {
+        display: inline-block;
+        content: "";
+        height: 20px;
+        line-height: 18px;
+        width: 20px;
+        background-color: #eee;
+        border: 1px solid #c0c0c0;
+        vertical-align: middle;
+        margin-left: 10px;
+        text-align: center;
+        color: white;
+    }
+
+input[type="checkbox"]:checked + label[for]::after {
+    background-color: #191970;
+    content: "✔";
+}

@@ -43,7 +43,7 @@ namespace Website.Controllers
                 return RedirectToAction(MVC.Home.Actions.Index());
             }
 
-            if (!string.IsNullOrWhiteSpace(project.GitUsername))
+            if (project.IsGitRepo)
             {
                 project.Commits = await GitHubApiHelper.GetCommitsAsync(project).ConfigureAwait(false);
             }
@@ -70,6 +70,12 @@ namespace Website.Controllers
             foreach (var project in projects)
             {
                 project.User = null;
+
+                if (project.IsGitRepo)
+                {
+                    project.Commits = await GitHubApiHelper.GetCommitsAsync(project).ConfigureAwait(false);
+                }
+
                 foreach (var commit in project.Commits)
                 {
                     commit.Project = null;

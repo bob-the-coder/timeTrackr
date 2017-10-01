@@ -15,5 +15,7 @@ namespace BusinessLogic.Models
 
         public virtual ICollection<Commit> Commits { get; set; }
         public virtual DataLayer.User User { get; set; }
+
+        public bool IsGitRepo => !string.IsNullOrWhiteSpace(GitUsername) && !string.IsNullOrWhiteSpace(GitRepo);
     }
 }

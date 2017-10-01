@@ -16,3 +16,25 @@
         .block-content > label + *:last-child {
             margin-bottom: 0;
         }
+
+.block-section {
+    box-shadow: 0 0 0 1px #c0c0c0;
+    padding: 15px;
+    padding-top: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+    .block-section > label[for]:first-of-type {
+        margin-top: -30px;
+        padding: 0 10px;
+        background-color: white;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        font-size: 13px;
+    }
+
+    .block-section > * {
+        width: 170px;
+    }
