@@ -40,6 +40,12 @@ td > div {
     margin: 10px 0;
 }
 
+td > img {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+}
+
 tr.empty > td:first-child {
     text-align: left;
 }

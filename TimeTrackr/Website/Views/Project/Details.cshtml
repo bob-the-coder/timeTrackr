@@ -9,7 +9,13 @@
 <div class="block black-on-white">
     <h2 class="white-on-blue">Overview</h2>
     <div class="block-content">
-        <label>Project</label>
+        <label>
+            @if (Model.IsGitRepo)
+            {
+                <img alt="[git]" src="~/Assets/img/github.png" class="project-icon"/>
+            }
+            Project
+        </label>
         <div>@Model.Name</div>
         @Html.LabelFor(model => model.CreatedAt)
         <div>@Model.CreatedAt.ToString(CultureInfo.CurrentCulture)</div>
@@ -18,8 +24,8 @@
     </div>
 </div>
 
-<div class="canvas-wrapper">
-    <canvas class="block black-on-white" height="245" width="800"></canvas>
+<div class="canvas-wrapper block black-on-white">
+    <canvas height="245" width="800"></canvas>
 </div>
 
 @{
@@ -41,7 +47,7 @@
             var $canvas = $("canvas");
 
             var commitDates = commits.selectDistinct(c => functions.dateFromDateTimeString(c.CreatedAt));
-            commitDates.unshift(functions.dateFromDateTimeString(project.CreatedAt));
+            
             var commitsPerDay = [];
             for (var i = 0; i < commitDates.length; i++) {
                 var commitsForDate = commits.where(c => functions.dateFromDateTimeString(c.CreatedAt) === commitDates[i]);
@@ -53,7 +59,7 @@
                 data: {
                     labels: commitDates,
                     datasets: [{
-                        label: "# of Commits",
+                        label: "Number of Commits",
                         backgroundColor: "rgba(25,25,112,1)",
                         borderColor: "rgba(25,25,112,1)",
                         data: commitsPerDay,
@@ -86,7 +92,7 @@
                             display: true,
                             scaleLabel: {
                                 display: true,
-                                labelString: '# of Commits'
+                                labelString: 'Number of Commits'
                             }
                         }]
                     }

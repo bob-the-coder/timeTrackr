@@ -26,7 +26,7 @@ namespace Website.Controllers
             model.UserId = UserIdentity.Id;
             if (model.IsGitRepo)
             {
-                model.Name += " [GitHub]";
+                model.Name += " [Git]";
             }
 
             model = await ProjectCore.CreateAsync(model, true).ConfigureAwait(false);

@@ -17,7 +17,13 @@
             @foreach (var project in Model)
             {
                 <tr>
-                    <td>@project.Name</td>
+                    <td>
+                        @if (project.IsGitRepo)
+                        {
+                            <img src="~/Assets/img/github.png" alt="[git]"/>
+                        }
+                        @project.Name
+                    </td>
                     <td>@project.CreatedAt.ToString(CultureInfo.InvariantCulture)</td>
                     <td>Never</td>
                     <td>@project.Commits.Count</td>

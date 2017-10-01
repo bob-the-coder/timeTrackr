@@ -231,6 +231,7 @@
     <Content Include="App\modules\userModule.js" />
     <Content Include="App\plugins\Chart.js" />
     <Content Include="App\prototypes.js" />
+    <Content Include="Assets\img\github.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\components\base.css" />
