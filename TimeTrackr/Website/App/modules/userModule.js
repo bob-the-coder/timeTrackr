@@ -6,6 +6,7 @@
         $.post("/Account/Create/",
             model.toPostData(),
             function (response) {
+                window.location = "/Account/Login";
         });
     }
 
@@ -15,7 +16,8 @@
 
         $.post("/Account/Login/",
             model.toPostData(),
-            function(response) {
+            function (response) {
+                window.location = "/";
             });
     }
 

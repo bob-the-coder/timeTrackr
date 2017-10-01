@@ -296,6 +296,7 @@
     <Content Include="Views\Project\Details.cshtml" />
     <Content Include="Views\Commit\List.cshtml" />
     <Content Include="Views\Commit\Create.cshtml" />
+    <Content Include="Views\Project\Statistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

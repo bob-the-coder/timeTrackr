@@ -37,3 +37,7 @@ Array.prototype.sum = function(f) {
     }
     return res;
 }
+
+Array.prototype.count = function(f) {
+    return this.where(f).length;
+}

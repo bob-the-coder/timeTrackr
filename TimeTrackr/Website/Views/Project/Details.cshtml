@@ -24,12 +24,15 @@
 
 @{
     ViewBag.ProjectId = Model.Id;
-    Model.Commits = Model.Commits.OrderBy(c => c.CreatedAt).ToList();
 }
 @Html.Partial(MVC.Commit.Views.List, Model.Commits)
 
+@{
+    Model.Commits = Model.Commits.OrderBy(c => c.CreatedAt).ToList();
+}
+
 @section Scripts{
-    <script>
+    <script id="deletethis">
         var project = JSON.parse('@(Html.Raw(JsonConvert.SerializeObject(Model)))');
         var commits = project.Commits || [];
 
@@ -49,7 +52,7 @@
                 data: {
                     labels: commitDates,
                     datasets: [{
-                        label: "Commit trending",
+                        label: "# of Commits",
                         backgroundColor: "rgba(25,25,112,1)",
                         borderColor: "rgba(25,25,112,1)",
                         data: commitsPerDay,
@@ -60,7 +63,7 @@
                     responsive: true,
                     title: {
                         display: true,
-                        text: 'Project Statistics'
+                        text: 'Commit Statistics'
                     },
                     tooltips: {
                         mode: 'index',
@@ -90,6 +93,8 @@
             };
 
             var chart = new Chart($canvas, config);
+
+            $("#deletethis").remove();
         });
     </script>
 }

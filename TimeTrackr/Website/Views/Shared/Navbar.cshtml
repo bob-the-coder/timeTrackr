@@ -3,8 +3,9 @@
         <div class="profile-pic white-on-blue block">@User.Identity.Name[0].ToString().ToUpper()</div>
     </a>
     <div class="profile-buttons block white-on-blue">
-        <button class="profile-button white-on-blue">Settings</button>
-        <button class="profile-button white-on-blue">Statistics</button>
+        <a href="/Project/Statistics">
+            <button class="profile-button white-on-blue">Statistics</button>
+        </a>
         <a href="/Account/LogOut">
             <button class="profile-button white-on-blue" id="logout">Log Out</button>
         </a>

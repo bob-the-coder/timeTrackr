@@ -7,7 +7,7 @@
             caller[k] = $("#" + k.toLowerCase()).val();
         }
     },
-    toPostData: function() {
+    toPostData: function () {
         var self = this;
         return JSON.parse(JSON.stringify(self));
     },
@@ -17,5 +17,15 @@
         if (!m) return void 0;
         var d = m[1];
         return d.replace(/-/g, "/");
+    },
+    generateByte: function () {
+        return Math.floor(Math.random() * 192);
+    },
+    generateRGBA: function (opacity) {
+        var r = functions.generateByte(),
+            g = functions.generateByte(),
+            b = functions.generateByte(),
+            o = opacity || 1;
+        return "rgba(" + r + "," + g + "," + b + "," + o + ")";
     }
 }

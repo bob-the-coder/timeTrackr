@@ -55,5 +55,22 @@ namespace Website.Controllers
         {
             return View(MVC.Project.Views.List);
         }
+
+        public virtual async Task<ActionResult> Statistics()
+        {
+            var navigationProperties = new[] { nameof(DataLayer.Project.Commits) };
+            var projects = await ProjectCore.GetListAsync(p => p.UserId == UserIdentity.Id, navigationProperties).ConfigureAwait(false);
+
+            foreach (var project in projects)
+            {
+                project.User = null;
+                foreach (var commit in project.Commits)
+                {
+                    commit.Project = null;
+                }
+            }
+
+            return View(projects);
+        }
     }
 }

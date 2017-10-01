@@ -1,0 +1,100 @@
+﻿@using Newtonsoft.Json
+@model IList<BusinessLogic.Models.Project>
+@{
+    ViewBag.Title = "Statistics";
+
+    var allCommits = new List<BusinessLogic.Models.Commit>();
+    foreach (var project in Model)
+    {
+        allCommits.AddRange(project.Commits);
+    }
+    allCommits = allCommits.OrderBy(c => c.CreatedAt).ToList();
+}
+
+<canvas class="block black-on-white"></canvas>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var $canvas = $("canvas");
+
+            var projects = JSON.parse('@(Html.Raw(JsonConvert.SerializeObject(Model)))');
+            var allCommits = JSON.parse('@(Html.Raw(JsonConvert.SerializeObject(allCommits)))');
+            var commitDates = allCommits.selectDistinct(c => functions.dateFromDateTimeString(c.CreatedAt));
+            var commitsByProject = [];
+
+            for (var i = 0; i < projects.length; i++) {
+                commitsByProject.push([]);
+            }
+
+            for (var ii = 0; ii < commitDates.length; ii++) {
+                var commitDate = commitDates[ii];
+                for (var j = 0; j < projects.length; j++) {
+                    var commitsOnDate =
+                        projects[j].Commits.count(c => functions.dateFromDateTimeString(c.CreatedAt) === commitDate);
+
+                    commitsByProject[j].push(commitsOnDate);
+                }
+            }
+
+            var datasets = [];
+            for (var iii = 0; iii < projects.length; iii++) {
+                var color = functions.generateRGBA(1),
+                    fillColor = functions.generateRGBA(0.4);
+                datasets.push({
+                    label: projects[iii].Name,
+                    backgroundColor: fillColor,
+                    borderColor: color,
+                    data: commitsByProject[iii],
+                    fill: true,
+                    lineTension: 0
+                });
+            }
+
+            var config = {
+                type: 'line',
+                data: {
+                    labels: commitDates,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Project Statistics'
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    scales: {
+                        xAxes: [
+                            {
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Date'
+                                }
+                            }
+                        ],
+                        yAxes: [
+                            {
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: '# of Commits'
+                                }
+                            }
+                        ]
+                    }
+                }
+            };
+
+            var chart = new Chart($canvas, config);
+        });
+    </script>
+}
