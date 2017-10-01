@@ -3,7 +3,7 @@
         var model = new RegisterModel();
         model.getData();
 
-        $.post("/Account/Register/",
+        $.post("/Account/Create/",
             model.toPostData(),
             function (response) {
         });

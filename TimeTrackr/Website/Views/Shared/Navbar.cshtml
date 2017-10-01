@@ -1,8 +1,10 @@
 ﻿<div id="navbar">
-    <div class="profile-pic white-on-blue block">C</div>
+    <div class="profile-pic white-on-blue block">@User.Identity.Name[0].ToString().ToUpper()</div>
     <div class="profile-buttons block white-on-blue">
         <button class="profile-button white-on-blue">Settings</button>
         <button class="profile-button white-on-blue">Statistics</button>
-        <button class="profile-button white-on-blue">Log Out</button>
+        <a href="/Account/LogOut">
+            <button class="profile-button white-on-blue">Log Out</button>
+        </a>
     </div>
 </div>

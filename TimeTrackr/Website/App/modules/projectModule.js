@@ -4,7 +4,9 @@
         model.getData();
 
         $.post("/Project/Create/",
-            model.toPostData());
+            model.toPostData(), function() {
+                window.location = "/";
+            });
     }
 
     return {

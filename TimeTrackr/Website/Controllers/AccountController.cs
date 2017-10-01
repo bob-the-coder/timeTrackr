@@ -12,11 +12,11 @@ using BusinessLogic.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Website.Filters;
 using Website.Models;
 
 namespace Website.Controllers
 {
-    [AllowAnonymous]
     public partial class AccountController : Controller
     {
         public virtual ActionResult Create()
@@ -78,6 +78,15 @@ namespace Website.Controllers
             Response.Cookies.Add(ck);
 
             return RedirectToAction(MVC.Home.Actions.Index());
+        }
+
+        [AuthorizeUserCustom]
+        public ActionResult LogOut()
+        {
+            HttpContext.Request.Cookies.Clear();
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction(MVC.Account.Actions.Login());
         }
     }
 }

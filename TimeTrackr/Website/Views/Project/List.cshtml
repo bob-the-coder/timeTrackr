@@ -14,38 +14,35 @@
             </tr>
         </thead>
         <tbody>
-            @if (Model.Any())
+            @foreach (var project in Model)
             {
-                foreach (var project in Model)
-                {
-                    <tr>
-                        <td>@project.Name</td>
-                        <td>@project.CreatedAt.ToString(CultureInfo.InvariantCulture)</td>
-                        <td>Never</td>
-                        <td>@project.Commits.Count</td>
-                        <td>
-                            <a href="/Project/Details/@(project.Id)">
-                                <button class="white-on-blue">Details</button>
-                            </a>
-                        </td>
-                    </tr>
-                }
-            }
-            else
-            {
-                <tr class="empty">
-                    <td></td>
-                    <td></td>
+                <tr>
+                    <td>@project.Name</td>
+                    <td>@project.CreatedAt.ToString(CultureInfo.InvariantCulture)</td>
+                    <td>Never</td>
+                    <td>@project.Commits.Count</td>
                     <td>
-                        Nothing here so far
-                        <a href="/Project/Create">
-                            <button class="white-on-blue">Add Project</button>
+                        <a href="/Project/Details/@(project.Id)">
+                            <button class="white-on-blue">Details</button>
                         </a>
                     </td>
-                    <td></td>
-                    <td></td>
                 </tr>
             }
+            <tr class="empty">
+                <td></td>
+                <td></td>
+                <td>
+                    @if (!Model.Any())
+                    {
+                        <text>Nothing here so far</text>
+                    }
+                    <a href="/Project/Create">
+                        <button class="white-on-blue">Add Project</button>
+                    </a>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
         </tbody>
     </table>
 
