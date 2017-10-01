@@ -1,6 +1,7 @@
 ﻿var Project = function() {
     var pr = this;
-    pr.Id = "";
     pr.Name = "";
-    pr.UserId = "";
 }
+
+Project.prototype.getData = functions.getPropsByName;
+Project.prototype.toPostData = functions.toPostData;

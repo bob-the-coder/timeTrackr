@@ -1,0 +1,14 @@
+﻿@model BusinessLogic.Models.Project
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="block black-on-white">
+    <h2 class="white-on-blue">New Project</h2>
+    <div class="block-content">
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, null, new { id = "name" })
+        
+        <button class="white-on-blue" onclick="projectModule.create()">Add Project</button>
+    </div>
+</div>

@@ -28,8 +28,10 @@ using T4MVC;
 public static partial class MVC
 {
     public static Website.Controllers.AccountController Account = new Website.Controllers.T4MVC_AccountController();
+    public static Website.Controllers.BaseController Base = new Website.Controllers.T4MVC_BaseController();
     public static Website.Controllers.HomeController Home = new Website.Controllers.T4MVC_HomeController();
     public static Website.Controllers.ProjectController Project = new Website.Controllers.T4MVC_ProjectController();
+    public static T4MVC.CommitController Commit = new T4MVC.CommitController();
     public static T4MVC.ManageController Manage = new T4MVC.ManageController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
@@ -78,10 +80,8 @@ namespace Links
         public static readonly string _references_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/_references.min.js") ? Url("_references.min.js") : Url("_references.js");
         public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
         public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
-        public static readonly string jquery_1_10_2_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-1.10.2.intellisense.min.js") ? Url("jquery-1.10.2.intellisense.min.js") : Url("jquery-1.10.2.intellisense.js");
-        public static readonly string jquery_1_10_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery-1.10.2.min.js") ? Url("jquery-1.10.2.min.js") : Url("jquery-1.10.2.js");
-        public static readonly string jquery_1_10_2_min_js = Url("jquery-1.10.2.min.js");
-        public static readonly string jquery_1_10_2_min_map = Url("jquery-1.10.2.min.map");
+        public static readonly string jquery_3_2_1_min_js = Url("jquery-3.2.1.min.js");
+        public static readonly string jquery_3_2_1_min_map = Url("jquery-3.2.1.min.map");
         public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
         public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
         public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
@@ -106,8 +106,17 @@ namespace Links
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
             public static readonly string base_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/base.min.css") ? Url("base.min.css") : Url("base.css");
             public static readonly string block_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/block.min.css") ? Url("block.min.css") : Url("block.css");
+            public static readonly string cards_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/cards.min.css") ? Url("cards.min.css") : Url("cards.css");
             public static readonly string colors_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/colors.min.css") ? Url("colors.min.css") : Url("colors.css");
             public static readonly string navbar_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/navbar.min.css") ? Url("navbar.min.css") : Url("navbar.css");
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class project {
+                public const string UrlPath = "~/Content/components/project";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(UrlPath); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(UrlPath + "/" + fileName); }
+            }
+        
+            public static readonly string table_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/table.min.css") ? Url("table.min.css") : Url("table.css");
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -132,9 +141,7 @@ namespace Links
                 public const string _references_js = "~/Scripts/_references.js"; 
                 public const string bootstrap_js = "~/Scripts/bootstrap.js"; 
                 public const string bootstrap_min_js = "~/Scripts/bootstrap.min.js"; 
-                public const string jquery_1_10_2_intellisense_js = "~/Scripts/jquery-1.10.2.intellisense.js"; 
-                public const string jquery_1_10_2_js = "~/Scripts/jquery-1.10.2.js"; 
-                public const string jquery_1_10_2_min_js = "~/Scripts/jquery-1.10.2.min.js"; 
+                public const string jquery_3_2_1_min_js = "~/Scripts/jquery-3.2.1.min.js"; 
                 public const string jquery_validate_js = "~/Scripts/jquery.validate.js"; 
                 public const string jquery_validate_min_js = "~/Scripts/jquery.validate.min.js"; 
                 public const string jquery_validate_unobtrusive_js = "~/Scripts/jquery.validate.unobtrusive.js"; 
@@ -148,12 +155,20 @@ namespace Links
         {
             public static partial class components 
             {
+                public static partial class project 
+                {
+                    public static class Assets
+                    {
+                    }
+                }
                 public static class Assets
                 {
                     public const string base_css = "~/Content/components/base.css";
                     public const string block_css = "~/Content/components/block.css";
+                    public const string cards_css = "~/Content/components/cards.css";
                     public const string colors_css = "~/Content/components/colors.css";
                     public const string navbar_css = "~/Content/components/navbar.css";
+                    public const string table_css = "~/Content/components/table.css";
                 }
             }
             public static partial class pages 

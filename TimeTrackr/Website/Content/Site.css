@@ -5,7 +5,12 @@
 .body-content {
     width: 1200px;
     padding: 80px 0;
+    text-align: center;
 }
+
+    .body-content > * {
+        text-align: initial;
+    }
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 

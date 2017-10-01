@@ -1,0 +1,43 @@
+﻿@using System.Globalization
+
+@model ICollection<BusinessLogic.Models.Commit>
+
+<table class="block black-on-white short">
+    <thead>
+        <tr>
+            <th>Created At</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            foreach (var commit in Model)
+            {
+                <tr>
+                    <td>@commit.CreatedAt.ToString(CultureInfo.InvariantCulture)</td>
+                    <td>@commit.From.ToString(CultureInfo.InvariantCulture)</td>
+                    <td>@commit.To.ToString(CultureInfo.InvariantCulture)</td>
+                    <td>
+                        <div>@commit.Description</div>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr class="empty">
+                <td></td>
+                <td>Nothing here so far</td>
+                <td>
+                    <a href="/Commit/Create/@(ViewBag.ProjectId)">
+                        <button class="white-on-blue">Add Commit</button>
+                    </a>
+                </td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>

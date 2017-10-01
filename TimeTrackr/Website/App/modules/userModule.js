@@ -6,7 +6,6 @@
         $.post("/Account/Register/",
             model.toPostData(),
             function (response) {
-            debugger;
         });
     }
 
@@ -17,7 +16,6 @@
         $.post("/Account/Login/",
             model.toPostData(),
             function(response) {
-                debugger;
             });
     }
 

@@ -7,7 +7,7 @@ using Website.Filters;
 
 namespace Website.Controllers
 {
-    public class BaseController : Controller
+    public partial class BaseController : Controller
     {
         public CustomIdentity UserIdentity => (CustomIdentity)User.Identity;
         // GET: Base

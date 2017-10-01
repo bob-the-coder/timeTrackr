@@ -1,14 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using BusinessLogic.Cores;
+using BusinessLogic.Models;
+using Website.Filters;
 
 namespace Website.Controllers
 {
-    public partial class ProjectController : Controller
+    [AuthorizeUserCustom]
+    public partial class ProjectController : BaseController
     {
-        // GET: Project
+        public virtual ActionResult Create()
+        {
+            return View(MVC.Project.Views.Create);
+        }
+
+        [HttpPost]
+        public virtual async Task<ActionResult> Create(Project model)
+        {
+            model.CreatedAt = DateTime.UtcNow;
+            model.UserId = UserIdentity.Id;
+
+            model = await ProjectCore.CreateAsync(model, true).ConfigureAwait(false);
+            if (model == null)
+            {
+                return RedirectToAction(MVC.Project.Actions.Create());
+            }
+
+            return RedirectToAction(MVC.Project.Actions.Details(model.Id));
+        }
+
+        public virtual async Task<ActionResult> Details(Guid id)
+        {
+            var navigationProperties = new[] { nameof(DataLayer.Project.Commits) };
+            var project = await ProjectCore.GetAsync(id, navigationProperties).ConfigureAwait(false);
+            if (project == null)
+            {
+                return RedirectToAction(MVC.Home.Actions.Index());
+            }
+
+            return View(MVC.Project.Views.Details, project);
+        }
+
         public virtual ActionResult GetList()
         {
             return View(MVC.Project.Views.List);

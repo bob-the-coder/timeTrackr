@@ -1,0 +1,22 @@
+﻿@using System.Globalization
+@using Links
+@model BusinessLogic.Models.Project
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="block black-on-white">
+    <h2 class="white-on-blue">Overview</h2>
+    <div class="block-content">
+        <label>Project</label>
+        <div>@Model.Name</div>
+        @Html.LabelFor(model => model.CreatedAt)
+        <div>@Model.CreatedAt.ToString(CultureInfo.CurrentCulture)</div>
+        <label>Commits</label>
+        <div>@Model.Commits.Count</div>
+    </div>
+</div>
+@{
+    ViewBag.ProjectId = Model.Id;
+}
+@Html.Partial(MVC.Commit.Views.List, Model.Commits)

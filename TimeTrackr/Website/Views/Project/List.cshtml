@@ -1,5 +1,7 @@
 ﻿@using System.Globalization
 
+@model ICollection<BusinessLogic.Models.Project>
+
 <div id="myProjects" class="card-list">
     <table class="block black-on-white">
         <thead>
@@ -8,32 +10,40 @@
                 <th>Started On</th>
                 <th>Last Commit On</th>
                 <th># Commits</th>
-                <th>Status</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr class="empty">
-                <td></td>
-                <td></td>
-                <td>Nothing here so far</td>
-                <td>
-                    <button class="white-on-blue">Add Project</button>
-                </td>
-                <td></td>
-                <td></td>
-            </tr>
-            @for (var i = 0; i < 0; i++)
+            @if (Model.Any())
             {
-                <tr>
-                    <td>Project Name</td>
-                    <td>@DateTime.UtcNow.AddDays(-2).AddHours(5).ToString(CultureInfo.InvariantCulture)</td>
-                    <td>@DateTime.UtcNow.ToString(CultureInfo.InvariantCulture)</td>
-                    <td>103</td>
-                    <td>Ongoing</td>
+                foreach (var project in Model)
+                {
+                    <tr>
+                        <td>@project.Name</td>
+                        <td>@project.CreatedAt.ToString(CultureInfo.InvariantCulture)</td>
+                        <td>Never</td>
+                        <td>@project.Commits.Count</td>
+                        <td>
+                            <a href="/Project/Details/@(project.Id)">
+                                <button class="white-on-blue">Details</button>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="empty">
+                    <td></td>
+                    <td></td>
                     <td>
-                        <button class="white-on-blue">Details</button>
+                        Nothing here so far
+                        <a href="/Project/Create">
+                            <button class="white-on-blue">Add Project</button>
+                        </a>
                     </td>
+                    <td></td>
+                    <td></td>
                 </tr>
             }
         </tbody>

@@ -3,6 +3,12 @@
     display: table !important;
 }
 
+table.short {
+    width: calc(800px);
+    display: inline-table !important;
+    vertical-align: top;
+}
+
 tr {
     display: table-row;
 }

@@ -42,10 +42,9 @@ namespace Website.Filters
 
                 var principal = filterContext.HttpContext.User as CustomPrincipal;
                 var identity = filterContext.HttpContext.User.Identity as CustomIdentity;
-                if (principal == null || identity == null)
+
+                if (principal != null && identity != null)
                 {
-                    filterContext.HttpContext.Response.StatusCode = 401;
-                    filterContext.Result = new HttpUnauthorizedResult();
                     return;
                 }
 
