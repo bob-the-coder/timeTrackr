@@ -58,8 +58,10 @@
     <Compile Include="Cores\UserCore.cs" />
     <Compile Include="Interfaces\IModel.cs" />
     <Compile Include="Interfaces\ISinglePkModel.cs" />
+    <Compile Include="ModelCore\AuthTokenCore.cs" />
     <Compile Include="ModelCore\BaseCore.cs" />
     <Compile Include="ModelCore\BaseSinglePkCore.cs" />
+    <Compile Include="Models\AuthToken.cs" />
     <Compile Include="Models\Commit.cs" />
     <Compile Include="Models\FilteredEntities.cs" />
     <Compile Include="Models\Project.cs" />

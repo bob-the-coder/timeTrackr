@@ -14,7 +14,8 @@ namespace BusinessLogic.TypeManagement
             config.CreateMap<DataLayer.User, User>();
 
             config.CreateMap<User, DataLayer.User>()
-                .ForMember(m => m.Projects, o => o.Ignore());
+                .ForMember(m => m.Projects, o => o.Ignore())
+                .ForMember(m => m.AuthTokens, o => o.Ignore());
         }
 
         internal static void ConfigureProject(IMapperConfiguration config)
@@ -32,6 +33,14 @@ namespace BusinessLogic.TypeManagement
 
             config.CreateMap<Commit, DataLayer.Commit>()
                 .ForMember(m => m.Project, o => o.Ignore());
+        }
+
+        internal static void ConfigureAuthToken(IMapperConfiguration config)
+        {
+            config.CreateMap<DataLayer.AuthToken, AuthToken>();
+
+            config.CreateMap<AuthToken, DataLayer.AuthToken>()
+                .ForMember(m => m.User, o => o.Ignore());
         }
 
         #region Item configuration extension methods

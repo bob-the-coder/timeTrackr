@@ -11,4 +11,15 @@ var LoginModel = function() {
     self.Password = "";
 }
 
-LoginModel.prototype.getDataFromView = functions.getPropsByName;
+LoginModel.prototype.getData = functions.getPropsByName;
+LoginModel.prototype.toPostData = functions.toPostData;
+
+var RegisterModel = function() {
+    var self = this;
+    self.Email = "";
+    self.Password = "";
+    self.ConfirmPassword = "";
+}
+
+RegisterModel.prototype.getData = functions.getPropsByName;
+RegisterModel.prototype.toPostData = functions.toPostData;

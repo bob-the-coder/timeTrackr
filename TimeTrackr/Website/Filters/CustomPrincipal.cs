@@ -13,6 +13,11 @@ namespace Website.Filters
             Identity = identity;
         }
 
+        public bool IsInRole(string role)
+        {
+            return true;
+        }
+
         public IIdentity Identity { get; }
     }
 }

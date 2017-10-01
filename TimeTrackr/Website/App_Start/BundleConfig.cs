@@ -9,7 +9,7 @@ namespace Website
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-3.2.1.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -19,7 +19,8 @@ namespace Website
                 .Include("~/App/constants.js")
                 .Include("~/App/prototypes.js")
                 .Include("~/App/functions.js")
-                .IncludeDirectory("~/App/models", "*.js", true));
+                .IncludeDirectory("~/App/models", "*.js", true)
+                .IncludeDirectory("~/App/modules", "*.js", true));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

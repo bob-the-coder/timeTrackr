@@ -10,6 +10,8 @@
         <EntityTypeShape EntityType="TimeTrackrModel.User" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="TimeTrackrModel.fk_commit_project" ManuallyRouted="false" />
         <AssociationConnector Association="TimeTrackrModel.fk_project_user" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TimeTrackrModel.AuthToken" Width="1.5" PointX="3" PointY="4.375" />
+        <AssociationConnector Association="TimeTrackrModel.fk_authtoken_user" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

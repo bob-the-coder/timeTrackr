@@ -17,6 +17,7 @@ namespace DataLayer
         public User()
         {
             this.Projects = new HashSet<Project>();
+            this.AuthTokens = new HashSet<AuthToken>();
         }
     
         public System.Guid Id { get; set; }
@@ -24,5 +25,6 @@ namespace DataLayer
         public byte[] Password { get; set; }
     
         public virtual ICollection<Project> Projects { get; set; }
+        public virtual ICollection<AuthToken> AuthTokens { get; set; }
     }
 }

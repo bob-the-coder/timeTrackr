@@ -224,6 +224,9 @@ namespace BusinessLogic.Workflow
                },
                {
                    typeof (CommitRepository), () => new CommitRepository()
+               },
+               {
+                   typeof (AuthTokenRepository), () => new AuthTokenRepository()
                }
            };
         }

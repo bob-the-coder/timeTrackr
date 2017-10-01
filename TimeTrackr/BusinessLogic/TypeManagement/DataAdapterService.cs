@@ -28,6 +28,7 @@ namespace BusinessLogic.TypeManagement
                 DasConfigurator.ConfigureUser(config);
                 DasConfigurator.ConfigureProject(config);
                 DasConfigurator.ConfigureCommit(config);
+                DasConfigurator.ConfigureAuthToken(config);
 
                 config.ForAllMaps((mapType, mapperExpression) => { mapperExpression.MaxDepth(2); });
             });

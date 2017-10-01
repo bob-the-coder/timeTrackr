@@ -28,5 +28,6 @@ namespace DataLayer
         public DbSet<Commit> Commits { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<AuthToken> AuthTokens { get; set; }
     }
 }

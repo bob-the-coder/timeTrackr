@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using BusinessLogic.Cores;
+using BusinessLogic.ModelCore;
+using BusinessLogic.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -14,6 +16,7 @@ using Website.Models;
 
 namespace Website.Controllers
 {
+    [AllowAnonymous]
     public partial class AccountController : Controller
     {
         public virtual ActionResult Create()
@@ -27,20 +30,44 @@ namespace Website.Controllers
         }
 
         [HttpPost]
+        public virtual async Task<ActionResult> Create(UserRegisterModel model)
+        {
+            if (!ModelState.IsValid || !model.Password.Equals(model.ConfirmPassword, StringComparison.Ordinal))
+            {
+                return new HttpNotFoundResult();
+            }
+
+            var userModel = new User
+            {
+                Email = model.Email,
+                Password = BusinessLogic.Util.PasswordHasher.GetPasswordHash(model.Password)
+            };
+
+            userModel = await UserCore.CreateAsync(userModel, true).ConfigureAwait(false);
+
+            if (userModel == null)
+            {
+                return new HttpNotFoundResult();
+            }
+
+            return View(MVC.Account.Views.Login);
+        }
+
+        [HttpPost]
         public virtual async Task<ActionResult> Login(UserLoginModel model)
         {
             var user = await UserCore.GetByEmailAndPasswordAsync(model.Email, model.Password).ConfigureAwait(false);
             if (user == null)
             {
-                return Json(null);
+                return RedirectToAction(MVC.Account.Actions.Login());
             }
-            //todo generate new token
 
-            var newToken = Guid.Empty;
+            var token = await AuthTokenCore.CreateAsync(new AuthToken {UserId = user.Id}).ConfigureAwait(false);
+
             HttpContext.Request.Cookies.Clear(); // clear all cookies, to start a fresh session
 
             var tkt = new FormsAuthenticationTicket(1, model.Email, DateTime.Now,
-                DateTime.Now.AddMinutes(999), false, $"{newToken}", FormsAuthentication.FormsCookiePath);
+                DateTime.Now.AddMinutes(999), false, $"{token.Id}#{Guid.NewGuid()}#{token.Id}", FormsAuthentication.FormsCookiePath);
 
             var cookiestr = FormsAuthentication.Encrypt(tkt);
             var ck = new HttpCookie(FormsAuthentication.FormsCookieName, cookiestr)
@@ -50,7 +77,7 @@ namespace Website.Controllers
             };
             Response.Cookies.Add(ck);
 
-            return Json("ok");
+            return RedirectToAction(MVC.Home.Actions.Index());
         }
     }
 }

@@ -12,15 +12,11 @@ namespace DataLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class Commit
+    public partial class AuthToken
     {
         public System.Guid Id { get; set; }
-        public System.Guid ProjectId { get; set; }
-        public System.DateTime CreatedAt { get; set; }
-        public string Description { get; set; }
-        public System.DateTime From { get; set; }
-        public System.DateTime To { get; set; }
+        public System.Guid UserId { get; set; }
     
-        public virtual Project Project { get; set; }
+        public virtual User User { get; set; }
     }
 }

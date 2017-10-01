@@ -10,7 +10,10 @@
 </head>
 <body>
     <div class="container body-content">
-        @Html.Partial(MVC.Shared.Views.Navbar)
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.Partial(MVC.Shared.Views.Navbar)
+        }
 
         @RenderBody()
     </div>
@@ -18,6 +21,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/app")
     @RenderSection("scripts", required: false)
 </body>
 </html>

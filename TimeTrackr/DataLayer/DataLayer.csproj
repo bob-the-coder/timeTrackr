@@ -51,9 +51,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthToken.cs">
+      <DependentUpon>TimeTrackrModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Commit.cs">
       <DependentUpon>TimeTrackrModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\AuthToken.cs" />
     <Compile Include="Entities\Commit.partial.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Extensions\Linq\EntityFrameworkLinqExtensions.cs" />
