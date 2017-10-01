@@ -3,11 +3,11 @@
     display: table !important;
 }
 
-table.short {
-    width: 985px;
-    display: inline-table !important;
-    vertical-align: top;
-}
+    table.short {
+        width: 985px;
+        display: inline-table !important;
+        vertical-align: top;
+    }
 
 tr {
     display: table-row;
@@ -22,6 +22,7 @@ th, td {
     padding: 0 10px;
     display: table-cell;
     text-align: left;
+    max-width: 300px;
 }
 
 th {
@@ -32,6 +33,11 @@ th {
 tr.empty > td {
     line-height: 50px;
     text-align: right;
+}
+
+td > div {
+    line-height: 20px;
+    margin: 10px 0;
 }
 
 tr.empty > td:first-child {

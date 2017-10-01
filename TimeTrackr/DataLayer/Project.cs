@@ -23,6 +23,8 @@ namespace DataLayer
         public System.Guid UserId { get; set; }
         public string Name { get; set; }
         public System.DateTime CreatedAt { get; set; }
+        public string GitUsername { get; set; }
+        public string GitRepo { get; set; }
     
         public virtual ICollection<Commit> Commits { get; set; }
         public virtual User User { get; set; }

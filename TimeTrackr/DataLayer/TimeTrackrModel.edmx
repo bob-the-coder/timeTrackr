@@ -31,6 +31,8 @@
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="GitUsername" Type="nvarchar" MaxLength="100" />
+          <Property Name="GitRepo" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -120,6 +122,8 @@
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="7" />
           <NavigationProperty Name="Commits" Relationship="Self.fk_commit_project" FromRole="Projects" ToRole="Commits" />
           <NavigationProperty Name="User" Relationship="Self.fk_project_user" FromRole="Projects" ToRole="Users" />
+          <Property Name="GitUsername" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GitRepo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -214,6 +218,8 @@
           <EntitySetMapping Name="Projects">
             <EntityTypeMapping TypeName="TimeTrackrModel.Project">
               <MappingFragment StoreEntitySet="Projects">
+                <ScalarProperty Name="GitRepo" ColumnName="GitRepo" />
+                <ScalarProperty Name="GitUsername" ColumnName="GitUsername" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

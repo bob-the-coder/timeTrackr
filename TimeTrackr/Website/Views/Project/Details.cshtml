@@ -33,7 +33,8 @@
 
 @section Scripts{
     <script id="deletethis">
-        var project = JSON.parse('@(Html.Raw(JsonConvert.SerializeObject(Model)))');
+        var projectJson = '@(Html.Raw(JsonConvert.SerializeObject(Model)))';
+        var project = JSON.parse(projectJson);
         var commits = project.Commits || [];
 
         $(document).ready(function () {

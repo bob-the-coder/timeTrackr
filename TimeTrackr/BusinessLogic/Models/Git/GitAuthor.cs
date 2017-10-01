@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace BusinessLogic.Models.Git
 {
@@ -11,6 +12,6 @@ namespace BusinessLogic.Models.Git
         public string Email { get; set; }
 
         [JsonProperty(PropertyName = "date")]
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using AutoMapper;
 using BusinessLogic.Models;
+using BusinessLogic.Models.Git;
 
 namespace BusinessLogic.TypeManagement
 {
@@ -33,6 +34,15 @@ namespace BusinessLogic.TypeManagement
 
             config.CreateMap<Commit, DataLayer.Commit>()
                 .ForMember(m => m.Project, o => o.Ignore());
+
+            config.CreateMap<GitCommitWrapper, Commit>()
+                .ForMember(m => m.Id, o => o.MapFrom(s => Guid.NewGuid()))
+                .ForMember(m => m.Project, o => o.Ignore())
+                .ForMember(m => m.ProjectId, o => o.Ignore())
+                .ForMember(m => m.CreatedAt, o => o.MapFrom(s => s.Commit.Author.Date))
+                .ForMember(m => m.From, o => o.MapFrom(s => s.Commit.Author.Date))
+                .ForMember(m => m.To, o => o.MapFrom(s => s.Commit.Author.Date))
+                .ForMember(m => m.Description, o => o.MapFrom(s => s.Commit.Message));
         }
 
         internal static void ConfigureAuthToken(IMapperConfiguration config)

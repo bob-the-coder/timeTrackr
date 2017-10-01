@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using BusinessLogic.Cores;
+using BusinessLogic.Helpers;
 using BusinessLogic.Models;
 using Website.Filters;
 
@@ -40,6 +41,11 @@ namespace Website.Controllers
             if (project == null)
             {
                 return RedirectToAction(MVC.Home.Actions.Index());
+            }
+
+            if (!string.IsNullOrWhiteSpace(project.GitUsername))
+            {
+                project.Commits = await GitHubApiHelper.GetCommitsAsync(project).ConfigureAwait(false);
             }
 
             foreach (var commit in project.Commits)

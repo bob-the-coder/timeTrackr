@@ -17,13 +17,16 @@ using Website.Models;
 
 namespace Website.Controllers
 {
+    [AllowAnonymous]
     public partial class AccountController : Controller
     {
+        [AllowAnonymous]
         public virtual ActionResult Create()
         {
             return View(MVC.Account.Views.Register);
         }
 
+        [AllowAnonymous]
         public virtual ActionResult Login()
         {
             return View(MVC.Account.Views.Login);
