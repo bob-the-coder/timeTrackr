@@ -4,7 +4,7 @@
 }
 
 table.short {
-    width: calc(800px);
+    width: 985px;
     display: inline-table !important;
     vertical-align: top;
 }

@@ -1,0 +1,9 @@
+﻿.canvas-wrapper {
+    width: 800px;
+    height: 245px;
+    display: inline-block;
+}
+
+canvas.small-canvas {
+    display: inline-block !important;
+}

@@ -42,6 +42,12 @@ namespace Website.Controllers
                 return RedirectToAction(MVC.Home.Actions.Index());
             }
 
+            foreach (var commit in project.Commits)
+            {
+                commit.Project = null;
+            }
+            project.Commits = project.Commits.OrderByDescending(c => c.CreatedAt).ToList();
+
             return View(MVC.Project.Views.Details, project);
         }
 

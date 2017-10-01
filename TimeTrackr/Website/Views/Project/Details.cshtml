@@ -1,8 +1,9 @@
 ﻿@using System.Globalization
 @using Links
+@using Newtonsoft.Json
 @model BusinessLogic.Models.Project
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = Model.Name + " Overview";
 }
 
 <div class="block black-on-white">
@@ -16,7 +17,79 @@
         <div>@Model.Commits.Count</div>
     </div>
 </div>
+
+<div class="canvas-wrapper">
+    <canvas class="block black-on-white" height="245" width="800"></canvas>
+</div>
+
 @{
     ViewBag.ProjectId = Model.Id;
+    Model.Commits = Model.Commits.OrderBy(c => c.CreatedAt).ToList();
 }
 @Html.Partial(MVC.Commit.Views.List, Model.Commits)
+
+@section Scripts{
+    <script>
+        var project = JSON.parse('@(Html.Raw(JsonConvert.SerializeObject(Model)))');
+        var commits = project.Commits || [];
+
+        $(document).ready(function () {
+            var $canvas = $("canvas");
+
+            var commitDates = commits.selectDistinct(c => functions.dateFromDateTimeString(c.CreatedAt));
+            commitDates.unshift(functions.dateFromDateTimeString(project.CreatedAt));
+            var commitsPerDay = [];
+            for (var i = 0; i < commitDates.length; i++) {
+                var commitsForDate = commits.where(c => functions.dateFromDateTimeString(c.CreatedAt) === commitDates[i]);
+                commitsPerDay.push(commitsForDate.length);
+            }
+
+            var config = {
+                type: 'line',
+                data: {
+                    labels: commitDates,
+                    datasets: [{
+                        label: "Commit trending",
+                        backgroundColor: "rgba(25,25,112,1)",
+                        borderColor: "rgba(25,25,112,1)",
+                        data: commitsPerDay,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        text: 'Project Statistics'
+                    },
+                    tooltips: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    hover: {
+                        mode: 'nearest',
+                        intersect: true
+                    },
+                    scales: {
+                        xAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Date'
+                            }
+                        }],
+                        yAxes: [{
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: '# of Commits'
+                            }
+                        }]
+                    }
+                }
+            };
+
+            var chart = new Chart($canvas, config);
+        });
+    </script>
+}

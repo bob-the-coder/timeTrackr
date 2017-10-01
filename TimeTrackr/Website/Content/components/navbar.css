@@ -21,6 +21,14 @@
     z-index: 1;
 }
 
+a:hover > .profile-pic {
+    background-color: #197019;
+}
+
+#logout:hover {
+    background-color: #d01919;
+}
+
 .profile-buttons {
     display: inline-block;
     padding-left: 28px;

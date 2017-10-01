@@ -20,6 +20,7 @@ namespace Website
                 .Include("~/App/prototypes.js")
                 .Include("~/App/functions.js")
                 .IncludeDirectory("~/App/models", "*.js", true)
+                .IncludeDirectory("~/App/plugins", "*.js", true)
                 .IncludeDirectory("~/App/modules", "*.js", true)
                 .Include("~/Scripts/bootstrap-datetimepicker.js"));
 
