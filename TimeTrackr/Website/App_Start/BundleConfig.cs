@@ -20,7 +20,8 @@ namespace Website
                 .Include("~/App/prototypes.js")
                 .Include("~/App/functions.js")
                 .IncludeDirectory("~/App/models", "*.js", true)
-                .IncludeDirectory("~/App/modules", "*.js", true));
+                .IncludeDirectory("~/App/modules", "*.js", true)
+                .Include("~/Scripts/bootstrap-datetimepicker.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

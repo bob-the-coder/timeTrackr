@@ -29,19 +29,20 @@
                 </tr>
             }
             <tr class="empty">
+                <td>
+                    @if (!Model.Any())
+                         {
+                             <text>Nothing here so far</text>
+                         }
+                </td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td>
-                    @if (!Model.Any())
-                    {
-                        <text>Nothing here so far</text>
-                    }
                     <a href="/Project/Create">
                         <button class="white-on-blue">Add Project</button>
                     </a>
                 </td>
-                <td></td>
-                <td></td>
             </tr>
         </tbody>
     </table>

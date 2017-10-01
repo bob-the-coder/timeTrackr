@@ -77,6 +77,7 @@ namespace Website.Controllers
         {
             public readonly string Create = "Create";
             public readonly string Login = "Login";
+            public readonly string LogOut = "LogOut";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -84,6 +85,7 @@ namespace Website.Controllers
         {
             public const string Create = "Create";
             public const string Login = "Login";
+            public const string LogOut = "LogOut";
         }
 
 
@@ -170,6 +172,17 @@ namespace Website.Controllers
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             LoginOverride(callInfo, model);
             return System.Threading.Tasks.Task.FromResult(callInfo as System.Web.Mvc.ActionResult);
+        }
+
+        [NonAction]
+        partial void LogOutOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult LogOut()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.LogOut);
+            LogOutOverride(callInfo);
+            return callInfo;
         }
 
     }

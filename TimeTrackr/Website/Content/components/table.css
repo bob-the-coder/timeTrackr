@@ -30,8 +30,15 @@ th {
 }
 
 tr.empty > td {
-    line-height: 100px;
-    max-width: 13%;
-    min-width: 195px;
-    text-align: center;
+    line-height: 50px;
+    text-align: right;
+}
+
+tr.empty > td:first-child {
+    text-align: left;
+}
+
+.datetimepicker table * {
+    line-height: normal;
+    border-radius: 0;
 }

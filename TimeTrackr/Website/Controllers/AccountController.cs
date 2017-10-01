@@ -81,7 +81,7 @@ namespace Website.Controllers
         }
 
         [AuthorizeUserCustom]
-        public ActionResult LogOut()
+        public virtual ActionResult LogOut()
         {
             HttpContext.Request.Cookies.Clear();
             FormsAuthentication.SignOut();

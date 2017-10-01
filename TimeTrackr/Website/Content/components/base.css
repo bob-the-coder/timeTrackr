@@ -19,7 +19,7 @@ h2 {
     line-height: 40px;
 }
 
-input {
+input, textarea {
     display: block;
     outline: none !important;
     border: 0 !important;
@@ -32,8 +32,15 @@ input {
     margin-bottom: 15px;
 }
 
-input:focus {
-    box-shadow: 0 0 0 1px #191970;
+    input:focus, textarea:focus {
+        box-shadow: 0 0 0 1px #191970;
+    }
+
+textarea {
+    height: auto;
+    min-height: 100px;
+    min-width: 200px;
+    max-width: 200px;
 }
 
 button {

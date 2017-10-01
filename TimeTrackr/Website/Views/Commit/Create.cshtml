@@ -1,0 +1,26 @@
+﻿@model BusinessLogic.Models.Commit
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="block black-on-white">
+    <h2 class="white-on-blue">Add Commit</h2>
+    <div class="block-content">
+        <input hidden aria-hidden="true" type="text" value="@Model.ProjectId" id="projectid" />
+        <label>Worked From</label>
+        <input type="text" id="from" />
+        <label>Until</label>
+        <input type="text" id="to" />
+        <label>Description</label>
+        <textarea id="description"></textarea>
+        <button class="white-on-blue" onclick="commitModule.create()">Add Commit</button>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function() {
+            $("#from, #to").datetimepicker();
+        });
+    </script>
+}

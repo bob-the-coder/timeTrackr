@@ -12,32 +12,31 @@
         </tr>
     </thead>
     <tbody>
-        @if (Model.Any())
-        {
-            foreach (var commit in Model)
+        @foreach (var commit in Model)
             {
-                <tr>
-                    <td>@commit.CreatedAt.ToString(CultureInfo.InvariantCulture)</td>
-                    <td>@commit.From.ToString(CultureInfo.InvariantCulture)</td>
-                    <td>@commit.To.ToString(CultureInfo.InvariantCulture)</td>
-                    <td>
-                        <div>@commit.Description</div>
-                    </td>
-                </tr>
-            }
-        }
-        else
-        {
-            <tr class="empty">
-                <td></td>
-                <td>Nothing here so far</td>
+            <tr>
+                <td>@commit.CreatedAt.ToString(CultureInfo.InvariantCulture)</td>
+                <td>@commit.From.ToString(CultureInfo.InvariantCulture)</td>
+                <td>@commit.To.ToString(CultureInfo.InvariantCulture)</td>
                 <td>
-                    <a href="/Commit/Create/@(ViewBag.ProjectId)">
-                        <button class="white-on-blue">Add Commit</button>
-                    </a>
+                    <div>@commit.Description</div>
                 </td>
-                <td></td>
             </tr>
         }
+        <tr class="empty">
+            <td>
+                @if (!Model.Any())
+                {
+                    <text>Nothing here so far</text>
+                }
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                <a href="/Commit/Create/@(ViewBag.ProjectId)">
+                    <button class="white-on-blue">Add Commit</button>
+                </a>
+            </td>
+        </tr>
     </tbody>
 </table>
