@@ -33,9 +33,12 @@
             <td></td>
             <td></td>
             <td>
-                <a href="/Commit/Create/@(ViewBag.ProjectId)">
-                    <button class="white-on-blue">Add Commit</button>
-                </a>
+                @if (!ViewBag.IsGitRepo)
+                {
+                    <a href="/Commit/Create/@(ViewBag.ProjectId)">
+                        <button class="white-on-blue">Add Commit</button>
+                    </a>
+                }
             </td>
         </tr>
     </tbody>

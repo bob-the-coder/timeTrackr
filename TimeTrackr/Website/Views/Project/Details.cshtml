@@ -30,6 +30,7 @@
 
 @{
     ViewBag.ProjectId = Model.Id;
+    ViewBag.IsGitRepo = Model.IsGitRepo;
 }
 @Html.Partial(MVC.Commit.Views.List, Model.Commits)
 
